@@ -19,5 +19,5 @@
     "-p=6080:6080",
     "-p=5901:5901"
   ],
-  "remoteUser": "root"
+  "remoteUser": "vscode"
 }
