@@ -3,7 +3,6 @@
   "build": {
     "dockerfile": "../Dockerfile"
   },
-  "postCreateCommand": "docker login && docker build -t qemu-virtualization . && docker run -it --rm qemu-virtualization",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -11,6 +10,7 @@
       ]
     }
   },
+  "postStartCommand": "bash .devcontainer/post-start.sh",
   "mounts": [
     "source=${localWorkspaceFolder}/os_images,target=/os-images,type=bind"
   ],
@@ -19,5 +19,5 @@
     "-p=6080:6080",
     "-p=5901:5901"
   ],
-  "remoteUser": "root"
+  "remoteUser": "vscode"
 }
