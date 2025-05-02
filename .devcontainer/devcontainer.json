@@ -1,0 +1,23 @@
+{
+  "name": "QEMU Virtualization Dev",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "postCreateCommand": "docker login && docker build -t qemu-virtualization . && docker run -it --rm qemu-virtualization",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/os_images,target=/os-images,type=bind"
+  ],
+  "runArgs": [
+    "--privileged",
+    "-p=6080:6080",
+    "-p=5901:5901"
+  ],
+  "remoteUser": "root"
+}
